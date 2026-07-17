@@ -1,0 +1,17 @@
+{
+  "name": "Customagotchi",
+  "short_name": "Customagotchi",
+  "description": "Dein einzigartiges virtuelles Haustier.",
+  "id": "/",
+  "start_url": "/#game",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#090c18",
+  "theme_color": "#090c18",
+  "lang": "de-DE",
+  "categories": ["games", "entertainment"],
+  "icons": [
+    {"src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}
+  ]
+}

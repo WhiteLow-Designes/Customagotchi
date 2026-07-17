@@ -1,0 +1,7 @@
+CUSTOMAGOTCHI – SPIELE-VERSION
+
+Spielorientiertes Komplettpaket mit Direktstart zu #game, allen Pflegeaktionen,
+Inventar, Shop, artspezifischen Minispielen, Turnieren und Serverkomponenten.
+
+Direktstart: START-SPIEL.cmd
+Regulärer Start: START-CUSTOMAGOTCHI.cmd

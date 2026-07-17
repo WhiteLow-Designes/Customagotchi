@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111827">
+  <meta name="description" content="Customagotchi – dein anspruchsvolles virtuelles Haustier mit fünf Arten, Pflege, Entwicklung und Turnieren.">
+  <title>Customagotchi – Dein Leben. Dein Wesen.</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css?v=20260717-1">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#start" aria-label="Customagotchi Startseite">
+      <span class="brand-mark" aria-hidden="true"><i></i><b></b></span>
+      <span>Customa<span>gotchi</span></span>
+    </a>
+    <nav class="desktop-nav" aria-label="Hauptnavigation">
+      <button class="nav-link active" data-view="home">Mein Gotchi</button>
+      <button class="nav-link" data-view="species">Arten</button>
+      <button class="nav-link" data-view="tournaments">Turniere</button>
+      <button class="nav-link" data-view="rules">Regelwerk</button>
+    </nav>
+    <div class="top-actions">
+      <button class="icon-button" id="soundToggle" aria-label="Ton an- oder ausschalten" title="Ton"><span aria-hidden="true">♪</span></button>
+      <button class="account-pill" id="accountButton"><span class="account-dot"></span><span id="accountLabel">Gast</span></button>
+    </div>
+  </header>
+
+  <main id="app">
+    <section class="view active" id="view-home" aria-labelledby="homeHeading">
+      <div class="hero" id="start">
+        <div class="eyebrow"><span></span> Virtuelles Leben · echte Verantwortung</div>
+        <h1 id="homeHeading">Ein kleiner Puls.<br><em>Ganz in deiner Hand.</em></h1>
+        <p class="hero-copy">Füttern, pflegen, trainieren, wachsen. Jede Entscheidung formt dein Customagotchi – vom entspannten Hamster bis zum kompromisslosen Alien.</p>
+        <div class="hero-actions" id="guestHeroActions">
+          <button class="primary-button" data-open="membership">Mitglied werden <span>→</span></button>
+          <button class="text-button" data-view-target="species">Alle Arten entdecken</button>
+        </div>
+
+        <div class="hero-orbit" aria-hidden="true">
+          <div class="orbit-line orbit-one"></div>
+          <div class="orbit-line orbit-two"></div>
+          <div class="egg egg-back"></div>
+          <div class="device-shell">
+            <div class="device-top"></div>
+            <div class="device-screen">
+              <div class="screen-glow"></div>
+              <div class="pixel-spark s1">+</div><div class="pixel-spark s2">·</div><div class="pixel-spark s3">+</div>
+              <div class="pet-preview hamster"><span class="ear left"></span><span class="ear right"></span><span class="eye left"></span><span class="eye right"></span><span class="mouth"></span><span class="blush left"></span><span class="blush right"></span></div>
+              <span class="screen-label">READY?</span>
+            </div>
+            <div class="device-buttons"><i></i><i></i><i></i></div>
+          </div>
+          <div class="stat-float float-health"><span>♥</span><b>Gesundheit</b><small>100%</small></div>
+          <div class="stat-float float-care"><span>✦</span><b>Pflege-Serie</b><small>Tag 1</small></div>
+        </div>
+      </div>
+
+      <div class="game-shell hidden" id="gameShell">
+        <aside class="pet-summary glass-panel">
+          <div class="summary-heading">
+            <div><span class="micro-label">DEIN BEGLEITER</span><h2 id="petNameHeading">Mochi</h2></div>
+            <span class="alive-badge" id="aliveBadge">● MUNTER</span>
+          </div>
+          <div class="species-line"><span id="petSpeciesLabel">Hamster</span><i></i><span id="petStageLabel">Baby</span><i></i><span id="petAgeLabel">Tag 1</span></div>
+
+          <div class="needs-list" id="needsList"></div>
+          <div class="attention-card" id="attentionCard">
+            <span class="attention-icon">!</span>
+            <div><b id="attentionTitle">Alles bestens</b><small id="attentionText">Dein Gotchi ist rundum versorgt.</small></div>
+          </div>
+          <button class="secondary-button full" id="openStats">Alle Werte &amp; Verlauf</button>
+        </aside>
+
+        <section class="pet-stage glass-panel" aria-label="Spielbereich">
+          <div class="stage-topline">
+            <div class="clock"><span id="gameClock">08:00</span><small id="gamePeriod">MORGEN</small></div>
+            <div class="weather"><span>✦</span><small id="seasonLabel">SOMMER-SAISON</small></div>
+          </div>
+          <div class="room" id="petRoom">
+            <div class="room-window"><span></span><i></i></div>
+            <div class="room-shelf"><i></i><b></b></div>
+            <div class="room-rug"></div>
+            <div class="poop-area" id="poopArea"></div>
+            <div class="pet-character hamster baby" id="petCharacter" role="img" aria-label="Dein Customagotchi">
+              <span class="pet-shadow"></span>
+              <span class="feature ear left"></span><span class="feature ear right"></span>
+              <span class="feature horn left"></span><span class="feature horn right"></span>
+              <span class="feature tail"></span>
+              <span class="body"><span class="face-eye left"></span><span class="face-eye right"></span><span class="face-mouth"></span><span class="cheek left"></span><span class="cheek right"></span><span class="belly-mark"></span></span>
+              <span class="status-bubble" id="petBubble">♥</span>
+            </div>
+            <div class="sleep-cloud hidden" id="sleepCloud">Z <small>z</small></div>
+            <div class="room-message" id="roomMessage" aria-live="polite">Willkommen zurück!</div>
+          </div>
+          <div class="action-dock" aria-label="Pflegeaktionen">
+            <button class="care-action" data-action="feed"><span>♨</span><small>Füttern</small></button>
+            <button class="care-action" data-action="snack"><span>●</span><small>Snack</small></button>
+            <button class="care-action" data-action="play"><span>◆</span><small>Spielen</small></button>
+            <button class="care-action" data-action="train"><span>▲</span><small>Training</small></button>
+            <button class="care-action" data-action="clean"><span>✦</span><small>Pflegen</small></button>
+            <button class="care-action" data-action="medicine"><span>✚</span><small>Medizin</small></button>
+            <button class="care-action" data-action="sleep"><span>☾</span><small>Schlaf</small></button>
+            <button class="care-action" data-action="light"><span>◐</span><small>Licht</small></button>
+          </div>
+        </section>
+
+        <aside class="daily-panel glass-panel">
+          <div class="panel-heading"><div><span class="micro-label">HEUTE</span><h3>Tagesrhythmus</h3></div><span id="dailyProgress">0/4</span></div>
+          <div class="quest-list" id="questList"></div>
+          <div class="streak-card"><span class="streak-flame">♨</span><div><small>PFLEGE-SERIE</small><b><span id="streakDays">1</span> Tage</b></div><span class="xp-badge" id="xpBadge">0 XP</span></div>
+          <button class="tournament-teaser" data-view-target="tournaments">
+            <span class="trophy">♛</span>
+            <span><small>NÄCHSTES EVENT</small><b id="nextEventTitle">Sommer-Pokal</b><em id="nextEventDate">In 12 Tagen</em></span>
+            <i>→</i>
+          </button>
+        </aside>
+      </div>
+
+      <section class="feature-strip" id="featureStrip">
+        <article><span>01</span><div><b>Wächst mit dir</b><p>Vom Ei bis zur einzigartigen Erwachsenenform.</p></div></article>
+        <article><span>02</span><div><b>Echte Konsequenzen</b><p>Fünf Modi, von fehlerfreundlich bis gnadenlos.</p></div></article>
+        <article><span>03</span><div><b>Saisonale Turniere</b><p>Qualifizieren, antreten und exklusive Titel gewinnen.</p></div></article>
+      </section>
+    </section>
+
+    <section class="view inner-view" id="view-species" aria-labelledby="speciesHeading">
+      <div class="page-intro"><span class="eyebrow"><span></span> Fünf Wesen · fünf Herausforderungen</span><h1 id="speciesHeading">Finde deinen <em>Schwierigkeitsgrad.</em></h1><p>Jede Art besitzt einen eigenen Charakter, Bedürfnisse und Fehlertoleranzen. Die gewählte Stufe bestimmt Tempo und Härte der Pflege.</p></div>
+      <div class="species-grid" id="speciesGrid"></div>
+      <div class="create-banner glass-panel"><div><span class="micro-label">BEREIT FÜR VERANTWORTUNG?</span><h2>Dein Begleiter wartet schon.</h2><p>Ab Plus-Mitgliedschaft. Ein aktives Customagotchi pro Profil.</p></div><button class="primary-button" id="createPetBanner">Gotchi auswählen <span>→</span></button></div>
+    </section>
+
+    <section class="view inner-view" id="view-tournaments" aria-labelledby="tournamentHeading">
+      <div class="page-intro tournament-intro"><span class="eyebrow"><span></span> Customa League · Saisonbetrieb</span><h1 id="tournamentHeading">Wo Pflege zu <em>Präzision</em> wird.</h1><p>Qualifiziere dein erwachsenes Customagotchi, tritt in fairen Pflegeprüfungen an und sammle saisonale Rangpunkte.</p></div>
+      <div class="tournament-layout">
+        <div class="event-column" id="eventList"></div>
+        <aside class="season-card glass-panel">
+          <span class="micro-label">AKTUELLE SAISON</span><h3 id="seasonCardTitle">Solar-Saison 2026</h3><div class="season-orb"><span>♛</span></div>
+          <div class="season-stats"><div><small>DEINE PUNKTE</small><b id="seasonPoints">0</b></div><div><small>RANG</small><b id="seasonRank">—</b></div></div>
+          <h4>Saisonale Belohnungen</h4>
+          <ol class="reward-list"><li><span>1</span><div><b>Solar-Krone</b><small>500+ Punkte · Legendärer Titel</small></div></li><li><span>2</span><div><b>Prisma-Rahmen</b><small>250+ Punkte · Profilkosmetik</small></div></li><li><span>3</span><div><b>Pflege-Pionier</b><small>100+ Punkte · Saisonabzeichen</small></div></li></ol>
+          <p class="fine-print">Die finale Auswertung und Bekanntgabe erfolgt jeweils am Saisonende im Newsletter und im Turnierbereich.</p>
+        </aside>
+      </div>
+      <section class="newsletter glass-panel"><div class="newsletter-icon">@</div><div><span class="micro-label">NICHTS VERPASSEN</span><h2>Turnier-Newsletter</h2><p>Termine, Austragungsorte, Teilnahmefenster und saisonale Gewinner landen im registrierten Postfach.</p></div><label class="switch-row"><input type="checkbox" id="newsletterToggle"><span class="switch"></span><b id="newsletterState">Newsletter aus</b></label><button class="secondary-button" id="openInbox">Postfach öffnen <span id="mailCount" class="mail-count">0</span></button></section>
+    </section>
+
+    <section class="view inner-view" id="view-rules" aria-labelledby="rulesHeading">
+      <div class="page-intro"><span class="eyebrow"><span></span> Fair, nachvollziehbar, vollständig</span><h1 id="rulesHeading">Das Customagotchi-<em>Regelwerk.</em></h1><p>Alle Pflege-, Mitgliedschafts- und Turnierregeln an einem Ort.</p></div>
+      <div class="rules-layout">
+        <nav class="rules-nav glass-panel" aria-label="Regelkapitel">
+          <button class="rule-tab active" data-rule="basics">01 · Grundlagen</button>
+          <button class="rule-tab" data-rule="care">02 · Pflege &amp; Leben</button>
+          <button class="rule-tab" data-rule="difficulty">03 · Schwierigkeitsgrade</button>
+          <button class="rule-tab" data-rule="tournament">04 · Turnierablauf</button>
+          <button class="rule-tab" data-rule="eligibility">05 · Teilnahmebedingungen</button>
+          <button class="rule-tab" data-rule="rewards">06 · Saison &amp; Belohnungen</button>
+        </nav>
+        <article class="rule-content glass-panel" id="ruleContent"></article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="brand footer-brand"><span class="brand-mark" aria-hidden="true"><i></i><b></b></span><span>Customa<span>gotchi</span></span></div>
+    <p>Ein eigenständiges virtuelles Haustierspiel · lokal gespeichert · mit Herz gepflegt.</p>
+    <button id="resetData" class="footer-link">Spielstand zurücksetzen</button>
+  </footer>
+
+  <div class="modal-backdrop hidden" id="modalBackdrop" role="presentation">
+    <section class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Fenster schließen">×</button>
+      <div id="modalContent"></div>
+    </section>
+  </div>
+
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+
+  <template id="petCardTemplate">
+    <article class="species-card glass-panel">
+      <div class="species-art"><span class="difficulty-chip"></span><div class="mini-pet"><span class="mini-ear left"></span><span class="mini-ear right"></span><span class="mini-eye left"></span><span class="mini-eye right"></span><span class="mini-mouth"></span></div></div>
+      <div class="species-card-body"><div class="species-title"><h2></h2><span class="level-label"></span></div><p class="species-tagline"></p><div class="mode-name"></div><p class="species-description"></p><div class="tolerance-row"><span>FEHLERTOLERANZ</span><div class="tolerance-dots"></div></div><button class="secondary-button full choose-species">Diese Art wählen</button></div>
+    </article>
+  </template>
+
+  <script src="app.js?v=20260717-1" defer></script>
+</body>
+</html>
