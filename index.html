@@ -8,7 +8,8 @@
   <title>Customagotchi – Dein Leben. Dein Wesen.</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20260717-1">
+  <link rel="stylesheet" href="styles.css?v=20260717-2">
+  <link rel="stylesheet" href="enhancements.css?v=20260717-1">
 </head>
 <body>
   <div class="ambient ambient-one"></div>
@@ -26,8 +27,12 @@
       <button class="nav-link" data-view="rules">Regelwerk</button>
     </nav>
     <div class="top-actions">
-      <button class="icon-button" id="soundToggle" aria-label="Ton an- oder ausschalten" title="Ton"><span aria-hidden="true">♪</span></button>
-      <button class="account-pill" id="accountButton"><span class="account-dot"></span><span id="accountLabel">Gast</span></button>
+      <button class="icon-button" id="soundToggle" aria-label="Soundeffekte an- oder ausschalten" title="Soundeffekte"><span aria-hidden="true">♪</span></button>
+      <div class="guest-auth-actions" id="guestAuthActions" aria-label="Konto">
+        <button class="auth-top-button primary" type="button" data-auth-action="register">Registrieren</button>
+        <button class="auth-top-button" type="button" data-auth-action="login">Login</button>
+      </div>
+      <button class="account-pill hidden" id="accountButton" type="button"><span class="account-dot"></span><span id="accountLabel"></span></button>
     </div>
   </header>
 
@@ -38,8 +43,13 @@
         <h1 id="homeHeading">Ein kleiner Puls.<br><em>Ganz in deiner Hand.</em></h1>
         <p class="hero-copy">Füttern, pflegen, trainieren, wachsen. Jede Entscheidung formt dein Customagotchi – vom entspannten Hamster bis zum kompromisslosen Alien.</p>
         <div class="hero-actions" id="guestHeroActions">
-          <button class="primary-button" data-open="membership">Mitglied werden <span>→</span></button>
-          <button class="text-button" data-view-target="species">Alle Arten entdecken</button>
+          <button class="primary-button" type="button" data-auth-action="register">Registrieren <span>→</span></button>
+          <button class="text-button" type="button" data-auth-action="login">Bereits registriert? Login</button>
+          <button class="text-button" type="button" data-view-target="species">Alle Arten entdecken</button>
+        </div>
+        <div class="hero-actions hidden" id="memberHeroActions">
+          <button class="primary-button" type="button" data-view-target="species">Gotchi auswählen <span>→</span></button>
+          <button class="text-button" type="button" data-view-target="rules">Regelwerk ansehen</button>
         </div>
 
         <div class="hero-orbit" aria-hidden="true">
@@ -170,6 +180,12 @@
     <div class="brand footer-brand"><span class="brand-mark" aria-hidden="true"><i></i><b></b></span><span>Customa<span>gotchi</span></span></div>
     <p>Ein eigenständiges virtuelles Haustierspiel · lokal gespeichert · mit Herz gepflegt.</p>
     <p class="footer-copyright"><a href="./" aria-label="Zur Customagotchi-Startseite">© 2026 Customagotchi</a> · Alle Rechte vorbehalten.</p>
+    <div class="music-controls" aria-label="Hintergrundmusik">
+      <button id="musicPlayPause" type="button" aria-pressed="false">▶ Abspielen</button>
+      <button id="musicMute" type="button" aria-pressed="false">× Stumm</button>
+      <label class="music-volume-control" for="musicVolume">Lautstärke <input id="musicVolume" type="range" min="0" max="100" step="1" value="18"></label>
+      <p class="music-status" id="musicStatus" aria-live="polite">Hintergrundmusik wird vorbereitet.</p>
+    </div>
     <button id="resetData" class="footer-link">Spielstand zurücksetzen</button>
   </footer>
 
@@ -189,6 +205,7 @@
     </article>
   </template>
 
-  <script src="app.js?v=20260717-1" defer></script>
+  <script src="auth-music.js?v=20260717-1" defer></script>
+  <script src="app.js?v=20260717-2" defer></script>
 </body>
 </html>

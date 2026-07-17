@@ -1,27 +1,33 @@
 # Customagotchi – GitHub-Pages-Version
 
-Diese Version ersetzt die bisherige Charlico-Webseite und ist für GitHub Pages vorbereitet.
+Diese Ausgabe ist vollständig für GitHub Pages vorbereitet und benötigt keinen PHP-, Python- oder Datenbankserver.
 
 ## Live-Adresse
 
-`https://whitelow-designes.github.io/charlico/`
+`https://whitelow-designes.github.io/Customagotchi/`
 
 ## Technik
 
 - HTML5, CSS3 und Vanilla JavaScript
-- kein PHP und kein Python-Server erforderlich
-- keine serverseitige SQLite-Datenbank
-- Spielstand wird im Browser über `localStorage` gespeichert
-- installierbare Progressive Web App mit Service Worker
+- relative Dateipfade für GitHub Pages
+- installierbare Progressive Web App mit Manifest und Service Worker
+- Spielstände und Konten werden lokal im Browser gespeichert
+- lokale Registrierung und Anmeldung mit PBKDF2-gehashten Passwörtern
+- fröhliche, synthetisch erzeugte Hintergrundmusik ohne externe Audiodatei
+- Musiksteuerung im Footer: Abspielen/Pausieren, Stummschalten und Lautstärke
 
-## Dateien für GitHub Pages
+## Wichtiger Hinweis zum Login
+
+GitHub Pages stellt ausschließlich statische Dateien bereit. Konten funktionieren deshalb nur im Browser und auf dem Gerät, auf dem sie registriert wurden. Für geräteübergreifende Konten wäre später ein externer Dienst wie Supabase oder Firebase erforderlich.
+
+## Dateien
 
 - `index.html`
 - `styles.css`
+- `enhancements.css`
 - `app.js`
+- `auth-music.js`
 - `sw.js`
 - `manifest.webmanifest`
 - `assets/icon.svg`
 - `.nojekyll`
-
-Die Python-/SQLite-Ausgabe des ursprünglichen Pakets wurde bewusst nicht übernommen, da GitHub Pages ausschließlich statische Dateien ausführt.

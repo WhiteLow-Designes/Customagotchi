@@ -1,0 +1,126 @@
+/* GitHub-Pages-Erweiterungen: lokaler Login und Musiksteuerung */
+.guest-auth-actions {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.auth-top-button {
+  min-height: 38px;
+  border-radius: 999px;
+  padding: 8px 13px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.68);
+  color: var(--ink);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .55px;
+  cursor: pointer;
+}
+.auth-top-button.primary {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+.auth-top-button:hover { transform: translateY(-1px); }
+
+.auth-choice-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 20px 0;
+}
+.auth-choice-card {
+  display: grid;
+  justify-items: start;
+  gap: 7px;
+  min-height: 145px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  text-align: left;
+  cursor: pointer;
+  transition: transform .2s, border-color .2s, box-shadow .2s;
+}
+.auth-choice-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--coral);
+  box-shadow: 0 16px 34px rgba(45,41,35,.10);
+}
+.auth-choice-card > span { color: var(--coral); font: 24px var(--mono); }
+.auth-choice-card strong { font-size: 16px; }
+.auth-choice-card small { color: var(--muted); line-height: 1.55; }
+.auth-local-note {
+  padding: 11px 13px;
+  border-radius: 8px;
+  background: #fff6e8;
+  color: #755f3e;
+  font-size: 9px;
+  line-height: 1.6;
+}
+.auth-error {
+  margin: 13px 0 0;
+  padding: 10px 12px;
+  border-radius: 7px;
+  background: #ffe6e1;
+  color: #9b2f26;
+  font-size: 9px;
+  line-height: 1.5;
+}
+.auth-error.visible { display: block; }
+.auth-login-grid { grid-template-columns: 1fr; }
+.auth-account-actions { flex-wrap: wrap; }
+.auth-account-actions .danger-button { margin-left: auto; }
+
+.music-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(255,255,255,.5);
+}
+.music-controls button {
+  border: 0;
+  border-radius: 7px;
+  background: rgba(23,32,42,.08);
+  padding: 8px 9px;
+  font-size: 8px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.music-controls button:hover { background: rgba(23,32,42,.14); }
+.music-volume-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font: 8px var(--mono);
+  color: var(--muted);
+}
+.music-volume-control input {
+  width: 90px;
+  accent-color: var(--coral);
+}
+.music-status {
+  width: 100%;
+  margin: 0;
+  font-size: 7px;
+  color: var(--muted);
+}
+
+@media (max-width: 780px) {
+  .guest-auth-actions { gap: 4px; }
+  .auth-top-button { padding: 8px 10px; font-size: 8px; }
+  .auth-choice-grid { grid-template-columns: 1fr; }
+  .music-controls { width: 100%; }
+}
+
+@media (max-width: 500px) {
+  .top-actions { min-width: 0; }
+  .auth-top-button { padding: 8px; }
+  .music-volume-control { width: 100%; }
+  .music-volume-control input { flex: 1; }
+}
